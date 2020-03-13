@@ -322,7 +322,7 @@ const getPlanBusinessDetails = () => ( {
 	getStoreAudience: () => i18n.translate( 'The plan for small businesses' ),
 	getDescription: () =>
 		i18n.translate(
-			'{{strong}}Best for Small Businesses:{{/strong}} Power your' +
+			'{{strong}}Best for small businesses:{{/strong}} Power your' +
 				' business website with custom plugins and themes, unlimited premium and business theme templates,' +
 				' 200 GB storage, and the ability to remove WordPress.com branding.',
 			{
