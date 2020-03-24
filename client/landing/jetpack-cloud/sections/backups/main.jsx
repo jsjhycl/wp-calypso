@@ -76,7 +76,15 @@ class BackupsPage extends Component {
 	};
 
 	renderMain() {
-		const { allowRestore, hasRealtimeBackups, logs, moment, siteId, siteSlug } = this.props;
+		const {
+			allowRestore,
+			hasRealtimeBackups,
+			logs,
+			moment,
+			siteId,
+			siteSlug,
+			isLoadingBackups,
+		} = this.props;
 		const { selectedDate } = this.state;
 		const selectedDateString = this.TO_REMOVE_getSelectedDateString();
 
@@ -97,23 +105,30 @@ class BackupsPage extends Component {
 					selectedDate={ selectedDate }
 					siteId={ siteId }
 				/>
-				<DailyBackupStatus
-					allowRestore={ allowRestore }
-					date={ selectedDateString }
-					backupAttempts={ backupAttempts }
-					siteSlug={ siteSlug }
-				/>
-				<BackupDelta
-					{ ...{
-						deltas,
-						backupAttempts,
-						hasRealtimeBackups,
-						realtimeEvents,
-						allowRestore,
-						moment,
-						siteSlug,
-					} }
-				/>
+
+				<div>{ isLoadingBackups && 'Loading backups...' }</div>
+
+				{ ! isLoadingBackups && (
+					<>
+						<DailyBackupStatus
+							allowRestore={ allowRestore }
+							date={ selectedDateString }
+							backupAttempts={ backupAttempts }
+							siteSlug={ siteSlug }
+						/>
+						<BackupDelta
+							{ ...{
+								deltas,
+								backupAttempts,
+								hasRealtimeBackups,
+								realtimeEvents,
+								allowRestore,
+								moment,
+								siteSlug,
+							} }
+						/>
+					</>
+				) }
 			</Main>
 		);
 	}
@@ -258,6 +273,8 @@ const mapStateToProps = state => {
 
 	const { indexedLog, oldestDateAvailable } = createIndexedLog( logs, siteTimezone, siteGmtOffset );
 
+	const isLoadingBackups = ! ( logs.state === 'success' );
+
 	return {
 		allowRestore,
 		filter,
@@ -270,6 +287,7 @@ const mapStateToProps = state => {
 		siteGmtOffset,
 		indexedLog,
 		oldestDateAvailable,
+		isLoadingBackups,
 	};
 };
 
