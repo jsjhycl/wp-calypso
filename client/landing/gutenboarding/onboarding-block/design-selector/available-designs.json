@@ -1,16 +1,16 @@
 {
 	"featured": [
 		{
-			"title": "mayland",
-			"slug": "mayland2",
+			"title": "Vesta",
+			"slug": "vesta",
 			"template": "mayland2",
 			"theme": "mayland",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/mayland/mayland2/",
 			"fonts": [ "Cabin", "Raleway" ],
-			"categories": [ "portfolio" ]
+			"categories": [ "featured", "portfolio" ]
 		},
 		{
-			"title": "rivington",
+			"title": "WIP Event Template",
 			"slug": "rivington",
 			"template": "rivington",
 			"theme": "rivington",
@@ -19,76 +19,76 @@
 			"categories": [ "event" ]
 		},
 		{
-			"title": "rockfield",
-			"slug": "rockfield2",
+			"title": "Reynolds",
+			"slug": "reynolds",
 			"template": "rockfield2",
 			"theme": "rockfield",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/rockfield/rockfield2/",
 			"fonts": [ "Playfair Display", "Fira Sans" ],
-			"categories": [ "portfolio" ]
+			"categories": [ "featured", "portfolio" ]
 		},
 		{
-			"title": "maywood",
-			"slug": "maywood",
+			"title": "Easley",
+			"slug": "easley",
 			"template": "maywood",
 			"theme": "maywood",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/maywood/maywood/",
 			"fonts": [ "Space Mono", "Roboto" ],
-			"categories": [ "portfolio" ]
+			"categories": [ "featured", "portfolio" ]
 		},
 		{
-			"title": "maywood",
-			"slug": "maywood2",
+			"title": "Camden",
+			"slug": "Camden",
 			"template": "maywood2",
 			"theme": "maywood",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/maywood/maywood2/",
 			"fonts": [ "Space Mono", "Roboto" ],
-			"categories": [ "portfolio" ]
+			"categories": [ "featured", "portfolio" ]
 		},
 		{
-			"title": "coutoire",
-			"slug": "coutoire",
+			"title": "Bowen",
+			"slug": "bowen",
 			"template": "coutoire",
 			"theme": "coutoire",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/coutoire/coutoire/",
 			"fonts": [ "Playfair Display", "Fira Sans" ],
-			"categories": [ "blog" ]
+			"categories": [ "featured", "blog" ]
 		},
 		{
-			"title": "stratford",
-			"slug": "stratford2",
+			"title": "Edison",
+			"slug": "edison",
 			"template": "stratford2",
 			"theme": "stratford",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/stratford/stratford2/",
 			"fonts": [ "Chivo", "Open Sans" ],
-			"categories": [ "blog" ]
+			"categories": [ "featured", "blog" ]
 		},
 		{
-			"title": "mayland",
-			"slug": "mayland",
+			"title": "Cassel",
+			"slug": "cassel",
 			"template": "mayland",
 			"theme": "mayland",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/mayland/mayland/",
 			"fonts": [ "Playfair Display", "Fira Sans" ],
-			"categories": [ "blog" ]
+			"categories": [ "featured", "blog" ]
 		},
 		{
-			"title": "alves",
-			"slug": "alves",
+			"title": "Overton",
+			"slug": "overton",
 			"template": "alves",
 			"theme": "alves",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/alves/alves/",
 			"fonts": [ "Cabin", "Raleway" ],
-			"categories": [ "business" ]
+			"categories": [ "featured", "business" ]
 		},
 		{
-			"title": "alves",
-			"slug": "alves2",
+			"title": "Doyle",
+			"slug": "doyle",
 			"template": "alves2",
 			"theme": "alves",
 			"src": "https://public-api.wordpress.com/rest/v1/template/demo/alves/alves2/",
 			"fonts": [ "Playfair Display", "Fira Sans" ],
-			"categories": [ "business" ]
+			"categories": [ "featured", "business" ]
 		}
 	]
 }
