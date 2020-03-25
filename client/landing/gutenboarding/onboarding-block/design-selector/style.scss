@@ -32,13 +32,10 @@
 	.design-selector__design-option {
 		width: 48%;
 		margin-bottom: 24px;
-
-		&.selected .design-selector__image-frame {
-			border: 2px solid var( --studio-green-20 );
-		}
 	}
 
 	.design-selector__image-frame {
+		position: relative;
 		display: block;
 		height: 406px;
 		border: 1px solid var( --studio-gray-5 );
@@ -72,6 +69,23 @@
 		text-align: center;
 		width: 100%;
 		font-size: 24px;
+		text-transform: capitalize;
 		@include onboarding-font-recoleta;
+	}
+
+	.design-selector__frame {
+		transform: scale( 0.5 );
+		transform-origin: 0 0;
+		width: 200%;
+		height: 200%;
+		animation: pulse-light 1s ease-in-out infinite;
+	}
+
+	.design-selector__iframe-overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 }

@@ -1,9 +1,10 @@
 /**
  * External dependencies
  */
-import { useDispatch, useSelect } from '@wordpress/data';
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import { addQueryArgs } from '@wordpress/url';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { useI18n } from '@automattic/react-i18n';
 import { useHistory } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import { useHistory } from 'react-router-dom';
  * Internal dependencies
  */
 import { STORE_KEY as ONBOARD_STORE } from '../../stores/onboard';
+import { Design } from './types';
 import designs from './available-designs.json';
 import { usePath, Step } from '../../path';
 import { isEnabled } from '../../../../config';
@@ -22,12 +24,22 @@ const DesignSelector: FunctionComponent = () => {
 	const { __: NO__ } = useI18n();
 	const { push } = useHistory();
 	const makePath = usePath();
-	const { selectedDesign } = useSelect( select => select( ONBOARD_STORE ).getState() );
+	const { selectedDesign, siteVertical, siteTitle } = useSelect( select =>
+		select( ONBOARD_STORE ).getState()
+	);
 	const { setSelectedDesign, resetOnboardStore } = useDispatch( ONBOARD_STORE );
 
 	const handleStartOverButtonClick = () => {
 		resetOnboardStore();
 	};
+
+	const getDesignUrl = ( design: Design, title: string ) =>
+		addQueryArgs( design.src, {
+			vertical: siteVertical?.label,
+			font_headings: design.fonts[ 0 ],
+			font_base: design.fonts[ 1 ],
+			site_title: title,
+		} );
 
 	return (
 		<div className="design-selector">
@@ -66,7 +78,14 @@ const DesignSelector: FunctionComponent = () => {
 							} }
 						>
 							<div className="design-selector__image-frame">
-								<img alt={ design.title } src={ design.src } srcSet={ design.srcset } />
+								<iframe
+									title={ design.title }
+									className="design-selector__frame"
+									src={ getDesignUrl( design, siteTitle ) }
+									scrolling="no"
+									sandbox=""
+								/>
+								<div className="design-selector__iframe-overlay" />
 							</div>
 							<span className="design-selector__option-overlay">
 								<span className="design-selector__option-name">{ design.title }</span>

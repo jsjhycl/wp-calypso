@@ -1,28 +1,94 @@
 {
 	"featured": [
 		{
-			"title": "Twenty twenty",
-			"slug": "twentytwenty",
-			"src": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftwentytwentydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?h=332&amp;vpw=960&amp;wph=960",
-			"srcset": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftwentytwentydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=480&amp;h=332&amp;vpw=960&amp;wph=960 480w, https://s.wordpress.com/mshots/v1/https%3A%2F%2Ftwentytwentydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=240&amp;h=332&amp;vpw=960&amp;wph=960 240w"
+			"title": "mayland",
+			"slug": "mayland2",
+			"template": "mayland2",
+			"theme": "mayland",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/mayland/mayland2/",
+			"fonts": [ "Cabin", "Raleway" ],
+			"categories": [ "portfolio" ]
 		},
 		{
-			"title": "Mayland",
+			"title": "rivington",
+			"slug": "rivington",
+			"template": "rivington",
+			"theme": "rivington",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/rivington/rivington/",
+			"fonts": [ "Arvo", "Montserrat" ],
+			"categories": [ "event" ]
+		},
+		{
+			"title": "rockfield",
+			"slug": "rockfield2",
+			"template": "rockfield2",
+			"theme": "rockfield",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/rockfield/rockfield2/",
+			"fonts": [ "Playfair Display", "Fira Sans" ],
+			"categories": [ "portfolio" ]
+		},
+		{
+			"title": "maywood",
+			"slug": "maywood",
+			"template": "maywood",
+			"theme": "maywood",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/maywood/maywood/",
+			"fonts": [ "Space Mono", "Roboto" ],
+			"categories": [ "portfolio" ]
+		},
+		{
+			"title": "maywood",
+			"slug": "maywood2",
+			"template": "maywood2",
+			"theme": "maywood",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/maywood/maywood2/",
+			"fonts": [ "Space Mono", "Roboto" ],
+			"categories": [ "portfolio" ]
+		},
+		{
+			"title": "coutoire",
+			"slug": "coutoire",
+			"template": "coutoire",
+			"theme": "coutoire",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/coutoire/coutoire/",
+			"fonts": [ "Playfair Display", "Fira Sans" ],
+			"categories": [ "blog" ]
+		},
+		{
+			"title": "stratford",
+			"slug": "stratford2",
+			"template": "stratford2",
+			"theme": "stratford",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/stratford/stratford2/",
+			"fonts": [ "Chivo", "Open Sans" ],
+			"categories": [ "blog" ]
+		},
+		{
+			"title": "mayland",
 			"slug": "mayland",
-			"src": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmaylanddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?h=332&amp;vpw=960&amp;wph=960",
-			"srcset": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmaylanddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=480&amp;h=332&amp;vpw=960&amp;wph=960 480w, https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmaylanddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=240&amp;h=332&amp;vpw=960&amp;wph=960 240w"
+			"template": "mayland",
+			"theme": "mayland",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/mayland/mayland/",
+			"fonts": [ "Playfair Display", "Fira Sans" ],
+			"categories": [ "blog" ]
 		},
 		{
-			"title": "Rockfield",
-			"slug": "rockfield",
-			"src": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Frockfielddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?h=332&amp;vpw=960&amp;wph=960",
-			"srcset": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Frockfielddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=480&amp;h=332&amp;vpw=960&amp;wph=960 480w, https://s.wordpress.com/mshots/v1/https%3A%2F%2Frockfielddemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=240&amp;h=332&amp;vpw=960&amp;wph=960 240w"
+			"title": "alves",
+			"slug": "alves",
+			"template": "alves",
+			"theme": "alves",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/alves/alves/",
+			"fonts": [ "Cabin", "Raleway" ],
+			"categories": [ "business" ]
 		},
 		{
-			"title": "Barnsbury",
-			"slug": "barnsbury",
-			"src": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbarnsburydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?h=332&amp;vpw=960&amp;wph=960",
-			"srcset": "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbarnsburydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=480&amp;h=332&amp;vpw=960&amp;wph=960 480w, https://s.wordpress.com/mshots/v1/https%3A%2F%2Fbarnsburydemo.wordpress.com%2F%3Ftheme_preview%3Dtrue?w=240&amp;h=332&amp;vpw=960&amp;wph=960 240w"
+			"title": "alves",
+			"slug": "alves2",
+			"template": "alves2",
+			"theme": "alves",
+			"src": "https://public-api.wordpress.com/rest/v1/template/demo/alves/alves2/",
+			"fonts": [ "Playfair Display", "Fira Sans" ],
+			"categories": [ "business" ]
 		}
 	]
 }
