@@ -11,18 +11,9 @@ import { localize } from 'i18n-calypso';
 import config from 'config';
 import { Card } from '@automattic/components';
 import formatCurrency from '@automattic/format-currency';
-import VerticalNav from 'components/vertical-nav';
-import { recordTracksEvent, recordGoogleEvent } from 'state/analytics/actions';
 import { withLocalizedMoment } from 'components/localized-moment';
 import DomainStatus from '../card/domain-status';
 import DomainWarnings from 'my-sites/domains/components/domain-warnings';
-import VerticalNavItem from 'components/vertical-nav/item';
-import { emailManagement } from 'my-sites/email/paths';
-import {
-	domainManagementContactsPrivacy,
-	domainManagementNameServers,
-	domainManagementTransfer,
-} from 'my-sites/domains/paths';
 import IcannVerificationCard from 'my-sites/domains/domain-management/components/icann-verification';
 import { isRecentlyRegistered, isExpiringSoon } from 'lib/domains/utils';
 import {
@@ -48,59 +39,6 @@ import ExpiringSoon from '../card/notices/expiring-soon';
 import DomainManagementNavigation from '../navigation';
 
 class RegisteredDomainType extends React.Component {
-	getVerticalNavigation() {
-		const { expiry, expired, pendingTransfer } = this.props.domain;
-		const { moment } = this.props;
-		const inNormalState = ! pendingTransfer && ! expired;
-		const inGracePeriod = moment().subtract( 18, 'days' ) <= moment( expiry );
-
-		return (
-			<VerticalNav>
-				{ inNormalState && this.emailNavItem() }
-				{ ( inNormalState || inGracePeriod ) && this.nameServersNavItem() }
-				{ ( inNormalState || inGracePeriod ) && this.contactsPrivacyNavItem() }
-				{ ( ! expired || inGracePeriod ) && this.transferNavItem() }
-			</VerticalNav>
-		);
-	}
-
-	emailNavItem() {
-		const path = emailManagement( this.props.selectedSite.slug, this.props.domain.name );
-
-		return <VerticalNavItem path={ path }>{ this.props.translate( 'Email' ) }</VerticalNavItem>;
-	}
-
-	nameServersNavItem() {
-		const path = domainManagementNameServers(
-			this.props.selectedSite.slug,
-			this.props.domain.name
-		);
-
-		return (
-			<VerticalNavItem path={ path }>
-				{ this.props.translate( 'Name servers and DNS' ) }
-			</VerticalNavItem>
-		);
-	}
-
-	contactsPrivacyNavItem() {
-		const { translate } = this.props;
-		const path = domainManagementContactsPrivacy(
-			this.props.selectedSite.slug,
-			this.props.domain.name
-		);
-
-		return <VerticalNavItem path={ path }>{ translate( 'Contacts and privacy' ) }</VerticalNavItem>;
-	}
-
-	transferNavItem() {
-		const path = domainManagementTransfer( this.props.selectedSite.slug, this.props.domain.name );
-
-		return (
-			<VerticalNavItem path={ path }>{ this.props.translate( 'Transfer domain' ) }</VerticalNavItem>
-		);
-	}
-
 	resolveStatus() {
 		const { domain, translate, purchase, moment } = this.props;
 		const { registrationDate, expiry } = domain;
@@ -384,7 +322,6 @@ class RegisteredDomainType extends React.Component {
 		const { statusText, statusClass, icon } = this.resolveStatus();
 
 		const newStatusDesignAutoRenew = config.isEnabled( 'domains/new-status-design/auto-renew' );
-		const newDomainStatusNavigation = config.isEnabled( 'domains/new-status-design/navigation' );
 
 		return (
 			<div className="domain-types__container">
@@ -442,11 +379,7 @@ class RegisteredDomainType extends React.Component {
 					) }
 					{ newStatusDesignAutoRenew && domain.currentUserCanManage && this.renderAutoRenew() }
 				</Card>
-				{ newDomainStatusNavigation ? (
-					<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
-				) : (
-					this.getVerticalNavigation()
-				) }
+				<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
 			</div>
 		);
 	}
@@ -464,8 +397,6 @@ export default connect(
 		};
 	},
 	{
-		recordTracksEvent,
-		recordGoogleEvent,
 		recordPaymentSettingsClick,
 	}
 )( withLocalizedMoment( localize( RegisteredDomainType ) ) );
