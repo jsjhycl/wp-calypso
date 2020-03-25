@@ -75,7 +75,7 @@ class BackupsPage extends Component {
 	};
 
 	renderMain() {
-		const { isRewindMissingPlan, siteId } = this.props;
+		const { isRewindMissingPlan, siteId, siteSlug } = this.props;
 
 		return (
 			<Main>
@@ -85,7 +85,7 @@ class BackupsPage extends Component {
 				<QuerySitePurchases siteId={ siteId } />
 				{ isRewindMissingPlan ? (
 					<Card>
-						<BackupUpsell />
+						<BackupUpsell siteSlug={ siteSlug } />
 					</Card>
 				) : (
 					this.renderBackupPicker()
