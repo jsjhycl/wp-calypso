@@ -10,6 +10,7 @@ import React, { Component } from 'react';
  * Internal dependencies
  */
 import DocumentHead from 'components/data/document-head';
+import { Card } from '@automattic/components';
 import { updateFilter } from 'state/activity-log/actions';
 import { getBackupAttemptsForDate, getDailyBackupDeltas, getEventsInDailyBackup } from './utils';
 import { getSelectedSiteId } from 'state/ui/selectors';
@@ -82,7 +83,13 @@ class BackupsPage extends Component {
 				<SidebarNavigation />
 				<QueryRewindState siteId={ siteId } />
 				<QuerySitePurchases siteId={ siteId } />
-				{ isRewindMissingPlan ? <BackupUpsell /> : this.renderBackupPicker() }
+				{ isRewindMissingPlan ? (
+					<Card>
+						<BackupUpsell />
+					</Card>
+				) : (
+					this.renderBackupPicker()
+				) }
 			</Main>
 		);
 	}
