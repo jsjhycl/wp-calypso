@@ -147,7 +147,6 @@ const VerticalSelect: React.FunctionComponent = () => {
 					onFocus={ () => setIsFocused( true ) }
 					onChange={ handleSuggestionChangeEvent }
 					onKeyDown={ handleSuggestionKeyDown }
-					defaultValue={ siteVertical?.label }
 					value={ inputValue }
 				/>
 				<div className="vertical-select__suggestions">
