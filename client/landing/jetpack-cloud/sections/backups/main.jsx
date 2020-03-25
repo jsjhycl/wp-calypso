@@ -31,6 +31,8 @@ import siteSupportsRealtimeBackup from 'state/selectors/site-supports-realtime-b
 import Pagination from 'components/pagination';
 import MissingCredentialsWarning from '../../components/missing-credentials';
 import getDoesRewindNeedCredentials from 'state/selectors/get-does-rewind-need-credentials.js';
+import getIsRewindMissingPlan from 'state/selectors/get-is-rewind-missing-plan';
+import BackupUpsell from './components/upsell';
 
 /**
  * Style dependencies
@@ -72,6 +74,25 @@ class BackupsPage extends Component {
 	};
 
 	renderMain() {
+		const { isRewindMissingPlan, siteId } = this.props;
+
+		return (
+			<Main>
+				<DocumentHead title="Backups" />
+				<SidebarNavigation />
+				<QueryRewindState siteId={ siteId } />
+				<QuerySitePurchases siteId={ siteId } />
+				{ isRewindMissingPlan ? <BackupUpsell /> : this.renderBackupPicker() }
+			</Main>
+		);
+	}
+
+	changePage = pageNumber => {
+		this.props.selectPage( this.props.siteId, pageNumber );
+		window.scrollTo( 0, 0 );
+	};
+
+	renderBackupPicker() {
 		const {
 			allowRestore,
 			doesRewindNeedCredentials,
@@ -87,14 +108,8 @@ class BackupsPage extends Component {
 		const backupAttempts = getBackupAttemptsForDate( logs, selectedDateString );
 		const deltas = getDailyBackupDeltas( logs, selectedDateString );
 		const realtimeEvents = getEventsInDailyBackup( logs, selectedDateString );
-
 		return (
-			<Main>
-				<DocumentHead title="Backups" />
-				<SidebarNavigation />
-				<QueryRewindState siteId={ siteId } />
-				<QuerySitePurchases siteId={ siteId } />
-
+			<>
 				<DatePicker
 					onDateChange={ this.onDateChange }
 					selectedDate={ selectedDate }
@@ -120,14 +135,9 @@ class BackupsPage extends Component {
 						siteSlug,
 					} }
 				/>
-			</Main>
+			</>
 		);
 	}
-
-	changePage = pageNumber => {
-		this.props.selectPage( this.props.siteId, pageNumber );
-		window.scrollTo( 0, 0 );
-	};
 
 	renderActivityLog() {
 		const { allowRestore, filter, logs, moment, siteId } = this.props;
@@ -224,6 +234,7 @@ const mapStateToProps = state => {
 		doesRewindNeedCredentials,
 		filter,
 		hasRealtimeBackups: siteSupportsRealtimeBackup( state, siteId ),
+		isRewindMissingPlan: getIsRewindMissingPlan( state, siteId ),
 		logs: logs?.data ?? [],
 		rewind,
 		siteId,
