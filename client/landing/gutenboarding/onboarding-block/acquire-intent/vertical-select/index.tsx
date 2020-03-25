@@ -4,7 +4,6 @@
 import React from 'react';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { Suggestions } from '@automattic/components';
-import { ENTER } from '@wordpress/keycodes';
 import { useI18n } from '@automattic/react-i18n';
 import { __experimentalCreateInterpolateElement } from '@wordpress/element';
 
@@ -25,17 +24,13 @@ type Suggestion = SiteVertical & { category?: string };
 
 const VERTICALS_STORE = Verticals.register();
 
-const VerticalSelect: React.FunctionComponent = () => {
+interface Props {
+	onSubmit?: () => void;
+}
+const VerticalSelect: React.FunctionComponent< Props > = ( {
+	onSubmit = ( e: React.FormEvent< HTMLFormElement > ) => e.preventDefault(),
+} ) => {
 	const { __: NO__ } = useI18n();
-	const popular = [
-		NO__( 'Travel Agency' ),
-		NO__( 'Digital Marketing' ),
-		NO__( 'Cameras & Photography' ),
-		NO__( 'Website Designer' ),
-		NO__( 'Restaurant' ),
-		NO__( 'Fashion Designer' ),
-		NO__( 'Real Estate Agent' ),
-	];
 
 	/**
 	 * Ref to the <Suggestions />, necessary for handling input events
@@ -71,10 +66,6 @@ const VerticalSelect: React.FunctionComponent = () => {
 
 	const handleSuggestionKeyDown = ( e: React.KeyboardEvent< HTMLInputElement > ) => {
 		if ( suggestionRef.current ) {
-			if ( suggestionRef.current.props.suggestions.length && e.keyCode === ENTER ) {
-				e.preventDefault();
-			}
-
 			suggestionRef.current.handleKeyEvent( e );
 		}
 	};
@@ -89,9 +80,7 @@ const VerticalSelect: React.FunctionComponent = () => {
 	let suggestions: Suggestion[];
 
 	if ( ! normalizedInputValue ) {
-		suggestions = verticals
-			.filter( vertical => popular.includes( vertical.label ) )
-			.map( vertical => ( { ...vertical, category: NO__( 'Popular' ) } ) );
+		suggestions = [];
 		resetSiteVertical();
 	} else {
 		suggestions = verticals.filter( vertical =>
@@ -149,8 +138,19 @@ const VerticalSelect: React.FunctionComponent = () => {
 					onKeyDown={ handleSuggestionKeyDown }
 					value={ inputValue }
 				/>
+				{ ! inputValue && (
+					<AnimatedPlaceholder
+						texts={ [
+							NO__( 'football' ),
+							NO__( 'shopping' ),
+							NO__( 'cars' ),
+							NO__( 'design' ),
+							NO__( 'travel' ),
+						] }
+					/>
+				) }
 				<div className="vertical-select__suggestions">
-					{ isFocused && !! inputValue.length && (
+					{ isFocused && (
 						<Suggestions
 							ref={ suggestionRef }
 							query={ inputValue }
@@ -165,20 +165,9 @@ const VerticalSelect: React.FunctionComponent = () => {
 	} );
 
 	return (
-		<div className="vertical-select">
+		<form className="vertical-select" onSubmit={ onSubmit }>
 			{ madlib }
-			{ ! inputValue && (
-				<AnimatedPlaceholder
-					texts={ [
-						NO__( 'football' ),
-						NO__( 'shopping' ),
-						NO__( 'cars' ),
-						NO__( 'design' ),
-						NO__( 'travel' ),
-					] }
-				/>
-			) }
-		</div>
+		</form>
 	);
 };
 
