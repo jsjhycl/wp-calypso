@@ -45,6 +45,7 @@ import QuerySitePurchases from 'components/data/query-site-purchases';
 import { isExpired, shouldRenderExpiringCreditCard, isRechargeable } from 'lib/purchases';
 import ExpiringCreditCard from '../card/notices/expiring-credit-card';
 import ExpiringSoon from '../card/notices/expiring-soon';
+import DomainManagementNavigation from '../navigation';
 
 class RegisteredDomainType extends React.Component {
 	getVerticalNavigation() {
@@ -383,6 +384,7 @@ class RegisteredDomainType extends React.Component {
 		const { statusText, statusClass, icon } = this.resolveStatus();
 
 		const newStatusDesignAutoRenew = config.isEnabled( 'domains/new-status-design/auto-renew' );
+		const newDomainStatusNavigation = config.isEnabled( 'domains/new-status-design/navigation' );
 
 		return (
 			<div className="domain-types__container">
@@ -440,8 +442,12 @@ class RegisteredDomainType extends React.Component {
 					) }
 					{ newStatusDesignAutoRenew && domain.currentUserCanManage && this.renderAutoRenew() }
 				</Card>
-
-				{ this.getVerticalNavigation() }
+				{ newStatusDesignAutoRenew && this.renderAutoRenew() }
+				{ newDomainStatusNavigation ? (
+					<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
+				) : (
+					this.getVerticalNavigation()
+				) }
 			</div>
 		);
 	}

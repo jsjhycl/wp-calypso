@@ -1,3 +1,4 @@
+
 /**
  * External dependencies
  */
@@ -39,6 +40,7 @@ import {
 import { isRechargeable, isExpired } from 'lib/purchases';
 import ExpiringCreditCard from '../card/notices/expiring-credit-card';
 import ExpiringSoon from '../card/notices/expiring-soon';
+import DomainManagementNavigation from '../navigation';
 
 class MappedDomainType extends React.Component {
 	getVerticalNavigation() {
@@ -296,6 +298,8 @@ class MappedDomainType extends React.Component {
 		const { statusText, statusClass, icon } = this.resolveStatus();
 
 		const newStatusDesignAutoRenew = config.isEnabled( 'domains/new-status-design/auto-renew' );
+		const newDomainStatusNavigation = config.isEnabled( 'domains/new-status-design/navigation' );
+
 		let expiresText;
 
 		if ( ! domain.expiry ) {
@@ -347,7 +351,12 @@ class MappedDomainType extends React.Component {
 					) }
 					{ newStatusDesignAutoRenew && this.renderAutoRenew() }
 				</Card>
-				{ this.getVerticalNavigation() }
+				{ newStatusDesignAutoRenew && this.renderAutoRenew() }
+				{ newDomainStatusNavigation ? (
+					<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
+				) : (
+					this.getVerticalNavigation()
+				) }
 			</div>
 		);
 	}
