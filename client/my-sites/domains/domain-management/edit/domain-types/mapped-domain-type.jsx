@@ -1,4 +1,3 @@
-
 /**
  * External dependencies
  */
@@ -349,9 +348,8 @@ class MappedDomainType extends React.Component {
 							/>
 						</div>
 					) }
-					{ newStatusDesignAutoRenew && this.renderAutoRenew() }
+					{ newStatusDesignAutoRenew && domain.currentUserCanManage && this.renderAutoRenew() }
 				</Card>
-				{ newStatusDesignAutoRenew && this.renderAutoRenew() }
 				{ newDomainStatusNavigation ? (
 					<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
 				) : (

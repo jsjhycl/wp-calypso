@@ -442,7 +442,6 @@ class RegisteredDomainType extends React.Component {
 					) }
 					{ newStatusDesignAutoRenew && domain.currentUserCanManage && this.renderAutoRenew() }
 				</Card>
-				{ newStatusDesignAutoRenew && this.renderAutoRenew() }
 				{ newDomainStatusNavigation ? (
 					<DomainManagementNavigation domain={ domain } selectedSite={ this.props.selectedSite } />
 				) : (
