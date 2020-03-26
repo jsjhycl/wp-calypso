@@ -28,8 +28,8 @@ export const newSiteError: Reducer< NewSiteErrorResponse | undefined, Action > =
 ) => {
 	switch ( action.type ) {
 		case 'FETCH_NEW_SITE':
-			return undefined;
 		case 'RECEIVE_NEW_SITE':
+		case 'RESET_SITE_STORE':
 			return undefined;
 		case 'RECEIVE_NEW_SITE_FAILED':
 			return {
@@ -39,8 +39,6 @@ export const newSiteError: Reducer< NewSiteErrorResponse | undefined, Action > =
 				name: action.error.name,
 				message: action.error.message,
 			};
-		case 'RESET_SITE_STORE':
-			return undefined;
 	}
 	return state;
 };
@@ -50,9 +48,7 @@ export const isFetchingSite: Reducer< boolean | undefined, Action > = ( state = 
 		case 'FETCH_NEW_SITE':
 			return true;
 		case 'RECEIVE_NEW_SITE':
-			return false;
 		case 'RECEIVE_NEW_SITE_FAILED':
-			return false;
 		case 'RESET_SITE_STORE':
 			return false;
 	}

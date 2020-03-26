@@ -7,7 +7,7 @@ import { combineReducers } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { SiteVertical, Design, LastCreatedSite } from './types';
+import { SiteVertical, Design } from './types';
 import { OnboardAction } from './actions';
 
 const domain: Reducer<
@@ -67,12 +67,15 @@ const pageLayouts: Reducer< string[], OnboardAction > = ( state = [], action ) =
 	return state;
 };
 
-const lastCreatedSite: Reducer< LastCreatedSite | undefined, OnboardAction > = (
+const selectedSite: Reducer< string | undefined, OnboardAction > = (
 	state = undefined,
 	action
 ) => {
+	if ( action.type === 'SET_SELECTED_SITE' ) {
+		return action.selectedSite;
+	}
 	if ( action.type === 'RESET_ONBOARD_STORE' ) {
-		return action.lastCreatedSite;
+		return undefined;
 	}
 	return state;
 };
@@ -83,7 +86,7 @@ const reducer = combineReducers( {
 	siteTitle,
 	siteVertical,
 	pageLayouts,
-	lastCreatedSite,
+	selectedSite,
 } );
 
 export type State = ReturnType< typeof reducer >;
